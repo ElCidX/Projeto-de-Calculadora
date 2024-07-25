@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background:linear-gradient(#ffffff, #cccccc) ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator{
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .calculator h2{
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        .calculator input{
+            width: calc(100% - 22px);
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #333;
+            color: #ffffff;
+            text-align: right;
+        }
+        .calculator .buttons{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .calculator button{
+            padding: 20px;
+            font-size: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+        }
+        .calculator button.operator{
+            background-color: #007bff;
+        }
+        .calculator button.clear{
+            background-color: #ff4848;
+        }
+        .calculator button.equal{
+            background-color: #007bff;
+            grid-column: span 4;
+        }
+        .calculator button:hover{
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Calculadora</h2>
+        <input type="text" id="display" disabled >
+        <div class="buttons">
+            <button onclick="clearDisplay()" class="clear">C</button>
+            <button onclick=" appendToDisplay('(')"class="operator">(</button>
+            <button onclick=" appendToDisplay(')')"class="operator">)</button>
+            <button onclick=" appendToDisplay('/')" class="operator">/</button>
+           
+
+            <button onclick=" appendToDisplay('7')"> 7</button>
+            <button onclick=" appendToDisplay('8')"> 8</button>
+            <button onclick=" appendToDisplay('9')"> 9</button>
+            <button onclick=" appendToDisplay('*')"class="operator">*</button>
+
+           
+            <button onclick=" appendToDisplay('4')"> 7</button>
+            <button onclick=" appendToDisplay('5')"> 8</button>
+            <button onclick=" appendToDisplay('6')"> 9</button>
+            <button onclick=" appendToDisplay('-')"class="operator">-</button>
+
+            <button onclick=" appendToDisplay('1')"> 7</button>
+            <button onclick=" appendToDisplay('2')"> 8</button>
+            <button onclick=" appendToDisplay('3')"> 9</button>
+            <button onclick=" appendToDisplay('+')"class="operator">+</button>
+
+            <button onclick=" appendToDisplay('0')"> 0</button>
+            <button onclick=" appendToDisplay('.')"> .</button>
+            <button onclick="calculate()" class="equal">=</button>
+        </div>
+    </div>
+
+    <script>
+        function appendToDisplay(value) { document.getElementById("display").value +=value;
+        }
+        function clearDisplay(){document.getElementById  ("display").value = '';
+    
+        }
+        function calculate() {
+            try {
+                var result =eval(document.getElementById("display").value);
+                document.getElementById('display').value = result;
+            } catch (error) {
+                alert("Expresao Invalida");
+                clearDisplay();
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
